@@ -12,7 +12,7 @@ node {
 
     // Build Docker image
     stage 'Build'
-    sh "docker build -t jeffhoffman13/vny:${gitCommit()} ."
+    sh "docker build -t jsh123/vny:${gitCommit()} ."
 
     // Log in and push image to GitLab
     stage 'Publish'
@@ -25,7 +25,7 @@ node {
         ]]
     ) {
         sh "docker login -u '${env.jsh123}' -p '${env.docker69}' -e demo@mesosphere.com"
-        sh "docker push hub.docker.com/r/jsh123/vny:${gitCommit()}"
+        sh "docker push jsh123/vny:${gitCommit()}"
     }
     // Deploy
     stage 'Deploy'
@@ -35,7 +35,7 @@ node {
         forceUpdate: false,
         credentialsId: 'dcos-token',
         filename: 'marathon.json',
-        appid: 'nginx-mesos',
-        docker: "hub.docker.com/r/jsh123/vny:${gitCommit()}".toString()
+        appid: 'nginx-dcos',
+        docker: "jsh123/vny:${gitCommit()}".toString()
     )
 }
