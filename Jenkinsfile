@@ -36,6 +36,6 @@ node {
         credentialsId: 'dcos-token',
         filename: 'marathon.json',
         appid: 'nginx-dcos',
-        docker: "jsh123/vny:${gitCommit()}".toString()
+        docker: "trrjsh/vny:${gitCommit()}".toString()
     )
 }
