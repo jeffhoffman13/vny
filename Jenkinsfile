@@ -19,7 +19,7 @@ node {
     withCredentials(
         [[
             $class: 'UsernamePasswordMultiBinding',
-            credentialsId: 'Docker hub',
+            credentialsId: 'dockerhub',
             passwordVariable: 'TRjsh12369',
             usernameVariable: 'trjsh'
         ]]
