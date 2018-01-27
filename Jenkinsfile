@@ -19,9 +19,9 @@ node {
     withCredentials(
         [[
             $class: 'UsernamePasswordMultiBinding',
-            credentialsId: 'github',
-            passwordVariable: 'github69',
-            usernameVariable: 'jeffhoffman13'
+            credentialsId: 'Docker hub',
+            passwordVariable: 'TRjsh12369',
+            usernameVariable: 'trjsh'
         ]]
     ) {
         sh "docker login -u '${env.trjsh}' -p '${env.TRjsh12369}' -e demo@mesosphere.com"
