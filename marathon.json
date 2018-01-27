@@ -5,7 +5,7 @@
   "instances": 1,
   "container": {
     "docker": {
-      "image": "jsh123/vny:latest",
+      "image": "trjsh/vny:latest",
       "portMappings": [
         {
           "containerPort": 80,
