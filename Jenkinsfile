@@ -35,7 +35,7 @@ node {
         forceUpdate: false,
         credentialsId: 'dcos-token',
         filename: 'marathon.json',
-        appid: 'nginx-dcos',
+        id: 'nginx-dcos',
         docker: "trrjsh/vny:${gitCommit()}".toString()
     )
 }
