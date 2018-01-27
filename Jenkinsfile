@@ -7,15 +7,17 @@ def gitCommit() {
 
 node {
     // Checkout source code from Git
-    stage 'Checkout'
+    stage('Checkout') {
     checkout scm
+    }
 
     // Build Docker image
-    stage 'Build'
+    stage('Build') {
     sh "docker build -t trjsh/vny:${gitCommit()} ."
+    }
 
     // Log in and push image to GitLab
-    stage 'Publish'
+    stage('Publish') {
     withCredentials(
         [[
             $class: 'UsernamePasswordMultiBinding',
@@ -27,8 +29,10 @@ node {
         sh "docker login -u '${env.trjsh}' -p '${env.TRjsh12369}' -e demo@mesosphere.com"
         sh "docker push trjsh/vny:${gitCommit()}"
     }
+    }
+
     // Deploy
-    stage 'Deploy'
+    stage('Deploy') {
 
     marathon(
         url: 'http://marathon.mesos:8080',
@@ -38,4 +42,5 @@ node {
         id: 'nginx-dcos',
         docker: "trrjsh/vny:${gitCommit()}".toString()
     )
+    }
 }
