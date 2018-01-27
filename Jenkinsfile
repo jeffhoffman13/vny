@@ -12,20 +12,20 @@ node {
 
     // Build Docker image
     stage 'Build'
-    sh "docker build -t jsh123/vny:${gitCommit()} ."
+    sh "docker build -t jeffhoffman13/vny:${gitCommit()} ."
 
     // Log in and push image to GitLab
     stage 'Publish'
     withCredentials(
         [[
             $class: 'UsernamePasswordMultiBinding',
-            credentialsId: 'dockerhub',
-            passwordVariable: 'docker69',
-            usernameVariable: 'jsh123'
+            credentialsId: 'github',
+            passwordVariable: 'github69',
+            usernameVariable: 'jeffhoffman13'
         ]]
     ) {
-        sh "docker login -u '${env.jsh123}' -p '${env.docker69}' -e demo@mesosphere.com"
-        sh "docker push jsh123/vny:${gitCommit()}"
+        sh "docker login -u '${env.trjsh}' -p '${env.TRjsh12369}' -e demo@mesosphere.com"
+        sh "docker push trjsh/vny:${gitCommit()}"
     }
     // Deploy
     stage 'Deploy'
